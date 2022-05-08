@@ -24,7 +24,7 @@ Plug 'matze/vim-move'
 Plug 'mileszs/ack.vim'
 " nnoremap <C-f> :Ack!<Space>
 Plug 'airblade/vim-gitgutter'
-Plug 'ryanoasis/vim-devicons'
+"Plug 'ryanoasis/vim-devicons'
 call plug#end()
 nnoremap <space> za <CR>
 nnoremap <silent> <C-a> :NERDTreeToggle <CR>
@@ -52,7 +52,9 @@ let g:airline_theme='solarized'
 let g:airline_solarized_bg='light'
 let g:solarized_termcolors=256
 let g:airline#extensions#tabline#enabled=1
-let g:airline_powerline_fonts=1
+
+" 暫時關掉特殊字元
+let g:airline_powerline_fonts=0
 
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
