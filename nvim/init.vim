@@ -7,25 +7,37 @@ Plug 'micha/vim-colors-solarized'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'scrooloose/syntastic'
+
+" \qf: quickfix, K, gd:goto def, gi:goto impl
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 so ~/.config/nvim/coc-config.vim
+
 Plug 'majutsushi/tagbar'
 Plug 'preservim/nerdcommenter'
 " <Leader>cc	加入註解
 " <Leader>cn	巢狀加入註解
 " <Leader>c<space>	切換註解
 " <Leader>cs	區塊註解
-Plug 'jiangmiao/auto-pairs'
+
+"Plug 'jiangmiao/auto-pairs'
+
 Plug 'matze/vim-move'
 " vmap <C-j> <Plug>MoveBlockDown
 " vmap <C-k> <Plug>MoveBlockUp
 " nmap <C-j> <Plug>MoveLineDown
 " nmap <C-k> <Plug>MoveLineUp
+
 Plug 'mileszs/ack.vim'
 " nnoremap <C-f> :Ack!<Space>
+
 Plug 'airblade/vim-gitgutter'
 "Plug 'ryanoasis/vim-devicons'
+
+" 自動format \cf  先install clang-format
+Plug 'rhysd/vim-clang-format'
+
 call plug#end()
+
 nnoremap <space> za <CR>
 nnoremap <silent> <C-a> :NERDTreeToggle <CR>
 nnoremap <Leader>r :NERDTreeRefreshRoot <CR>
@@ -60,14 +72,59 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 
+
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
+
 let g:syntastic_c_checkers = ['c']
 let g:syntastic_cpp_checkers = ['cpp']
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_html_tidy_quiet_messages={"level":"warnings"}
+
+" 如果要用cpplint要先pip install cpplint之類的才行
+"let g:syntastic_cpp_checkers = ['cpplint', 'gcc']
+"let g:syntastic_c_checkers = ['cpplint', 'gcc']
+"let g:syntastic_cpp_cpplint_exec = 'cpplint'
+" 设置 cpplint 的错误级别阈值（默认是 5），级别低于这一设置的不会显示
+"let g:syntastic_cpp_cpplint_thres = 1
+" 注意需要设置 错误聚合，才能同时显示两个 checker 的错误
+"let syntastic_aggregate_errors = 1
+
+"let g:syntastic_error_symbol = "✗"
+"let g:syntastic_warning_symbol = "⚠"
+"let g:syntastic_style_error_symbol = '!'
+"let g:syntastic_style_warning_symbol = '?'
+
+" 以下是ClangFormat的設定
+let g:clang_format#code_style = 'google'
+let g:clang_format#style_options = {
+			\ "UseTab": "Never",
+			\ "ConstructorInitializerIndentWidth": "4",
+			\ "ContinuationIndentWidth": "2",
+			\ "IndentWidth": "2",
+            \ "AllowShortIfStatementsOnASingleLine" : "true",
+            \ "AlwaysBreakTemplateDeclarations" : "true",
+            \ "Standard" : "c++20",
+            \ "BreakBeforeBraces" : "Attach",
+			\ "NamespaceIndentation": "All",
+			\ "ColumnLimit": "100",
+			\ "IndentPPDirectives": "BeforeHash",
+			\ "IndentCaseLabels": "true",
+			\ "IndentCaseBlocks": "false",
+			\ "IndentAccessModifiers": "false",
+			\ "IndentWrappedFunctionNames": "true",
+			\ "AlignTrailingComments": "false",
+			\ "SortIncludes": "false"} " Attach: 大括號永遠不換行
+"map to <Leader>cf in C++ code
+autocmd FileType c,cpp,objc nnoremap <buffer><Leader>cf :<C-u>ClangFormat<CR>
+autocmd FileType c,cpp,objc vnoremap <buffer><Leader>cf :ClangFormat<CR>
+" if you install vim-operator-user
+autocmd FileType c,cpp,objc map <buffer><Leader>x <Plug>(operator-clang-format)
+" Toggle auto formatting:
+nmap <Leader>C :ClangFormatAutoToggle<CR>
+
+"let g:syntastic_python_checkers = ['pylint']
+"let g:syntastic_html_tidy_quiet_messages={"level":"warnings"}
 
 let g:SuperTabMappingForward='<s-tab>'
 let g:SuperTabMappingBackward='<tab>'
@@ -107,8 +164,9 @@ colorscheme solarized
 " 雜項設定，詳細解說請用 `:help <opeion>`，例如 `:help showcmd`
 set showcmd
 set nu
-set tabstop=4
-set shiftwidth=4
+set tabstop=2
+set shiftwidth=2
+set expandtab
 set autoindent
 set nowrap
 set incsearch
