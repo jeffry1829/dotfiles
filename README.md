@@ -7,5 +7,10 @@
 4. open nvim, :PlugInstall
 
 ## VSCode
-Use settings.json in global area
-Use c_cpp_properties in EACH repository. Thus it can find correct compile_commands.json
+Use settings.json in global area   
+Use c_cpp_properties in EACH repository. Thus it can find correct compile_commands.json  
+NOTE that: Do not use extensions other than C/C++.  
+For example, C/C++ Clang Command Adapter and C++ IntelliSense, which may cause intellisense problem.  
+  
+The working concept is: we depend on compile_commands.json to provide proper intellisense.  
+And .clang_format to format  

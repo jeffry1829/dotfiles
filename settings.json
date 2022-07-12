@@ -1,4 +1,6 @@
 {
+    //If you're using .bashrc, make sure you set pwd to HOME in .bashrc
+    //Since there might be problem relate to path
     "terminal.integrated.automationProfile.linux": {
         "path": "/bin/bash"
     },
@@ -19,11 +21,14 @@
       "**/.intel/**": true,
       "**/.cmake/**": true,
       "**/.dbus/**": true,
-      "**/intel/**": true,
-      "**/build/**": true
+      "**/intel/**": true
     },
     //"C_Cpp.default.compileCommands": "/home/petjelinux/Cytnx/build/compile_commands.json",
-    "clang.executable": "/home/petjelinux/anaconda3/envs/cytnx/bin/clang",
+    //Do not use extensions other than C/C++ "clang.executable": "/home/petjelinux/anaconda3/envs/cytnx/bin/clang",
+    //For example, C/C++ Clang Command Adapter and C++ IntelliSense, which may cause intellisense problem
+    "C_Cpp.default.compilerPath": "/home/petjelinux/anaconda3/envs/cytnx/bin/g++",
+    "C_Cpp.intelliSenseEngine": "Default", // need to specify this line for intellisense to work
+    //, although this is default setting, weird.
     "C_Cpp.clang_format_style": "file", // need to specify this line, although this is default setting, weird.
     "C_Cpp.formatting": "clangFormat",
     "editor.defaultFormatter": "ms-vscode.cpptools"
