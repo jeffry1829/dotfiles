@@ -1,0 +1,30 @@
+{
+    "terminal.integrated.automationProfile.linux": {
+        "path": "/bin/bash"
+    },
+    "terminal.integrated.shellIntegration.enabled": true,
+    "terminal.integrated.defaultProfile.linux": "bash",
+    "files.watcherExclude": {
+      "**/.git/objects/**": true,
+      "**/.git/subtree-cache/**": true,
+      "**/node_modules/*/**": true,
+      "**/.cache/**": true,
+      "**/sys_programs/**": true,
+      "**/.local/**": true,
+      "**/.nv/**": true,
+      "**/.vnc/**": true,
+      "**/.pki/**": true,
+      "**/.npm/**": true,
+      "**/.mozilla/**": true,
+      "**/.intel/**": true,
+      "**/.cmake/**": true,
+      "**/.dbus/**": true,
+      "**/intel/**": true,
+      "**/build/**": true
+    },
+    //"C_Cpp.default.compileCommands": "/home/petjelinux/Cytnx/build/compile_commands.json",
+    "clang.executable": "/home/petjelinux/anaconda3/envs/cytnx/bin/clang",
+    "C_Cpp.clang_format_style": "file", // need to specify this line, although this is default setting, weird.
+    "C_Cpp.formatting": "clangFormat",
+    "editor.defaultFormatter": "ms-vscode.cpptools"
+}

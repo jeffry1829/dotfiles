@@ -5,3 +5,7 @@
 3. Install git, and do ssh-keygen!
 3. Install nvim folder to ~/.config/nvim
 4. open nvim, :PlugInstall
+
+## VSCode
+Use settings.json in global area
+Use c_cpp_properties in EACH repository. Thus it can find correct compile_commands.json
