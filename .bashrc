@@ -32,6 +32,10 @@ unset __conda_setup
 
 conda activate cytnx
 
+#For vscode workspace, if i'm at /home/petjelinux/Cytnx/, there's another cytnx folder inside this
+#Thus, the python script below may find wrong Cytnx_lib
+cd /home/petjelinux/
+
 export CYTNX_ROOT=/home/petjelinux/Cytnx_lib
 export CYTNX_INC=$(python3 -c "exec(\"import sys\nsys.path.append(\'$CYTNX_ROOT\')\nimport cytnx\nprint(cytnx.__cpp_include__)\")")
 export CYTNX_LDFLAGS=$(python3 -c "exec(\"import sys\nsys.path.append(\'$CYTNX_ROOT\')\nimport cytnx\nprint(cytnx.__cpp_linkflags__)\")")
@@ -41,13 +45,12 @@ export CYTNX_CXXFLAGS=$(python3 -c "exec(\"import sys\nsys.path.append(\'$CYTNX_
 
 export PATH=/home/petjelinux/sys_programs/nvim-linux64/bin:$PATH
 export PATH=/home/petjelinux/sys_programs/node-v16.14.2-linux-x64/bin:$PATH
+export PATH=/home/petjelinux/sys_programs/cppcheck/build/bin:$PATH
 export PATH=/home/petjelinux/sys_programs/executables:$PATH
 #export PATH=/home/petjelinux/anaconda3/envs/cytnx/bin:$PATH
 #alias gmake='make'
 
-source /home/petjelinux/intel/oneapi/setvars.sh
-#source /opt/intel/oneapi/setvars.sh
+source /opt/intel/oneapi/vtune/latest/vtune-vars.sh
+
 export DISPLAY=:1
 
-# onely use this if im testing HsuKe's program
-#export LD_LIBRARY_PATH=/home/petjelinux/anaconda3/envs/cytnx/lib:/home/petjelinux/Cytnx_lib/lib64
